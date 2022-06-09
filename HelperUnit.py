@@ -8,7 +8,7 @@ import os
 
 import glob
 from tkinter import *
-#from tkinter import ttk
+
 import tkinter as tk
 import requests
 import pygame
@@ -25,24 +25,24 @@ totalarr=[]
 
 def main():
     def deleteMusic():
-        #os.remove('C:/Users/jabio/Documents/LTspiceXVII/reddit0.mp3')
+       
         global postNumber
         totalarr=os.getcwd()
-        #files = glob.glob(f'C:/Users/jabio/Documents/LTspiceXVII/')
+       
         for f in totalarr:
             if f.find("reddit") != -1:
                 os.remove(f)
     
     
     def speak(message,m):
-          g = gTTS(message, lang = 'en')#, tld = 'com.au')
+          g = gTTS(message, lang = 'en')
 
 
           file=f'reddit{m}.mp3'
           totalarr.append(file)
           print(file)
           g.save(file)
-          #playsound.playsound(file)
+         
           pygame.mixer.music.load(file)
           pygame.mixer.music.play(loops=0)
 
@@ -62,7 +62,6 @@ def main():
            
             
             
-            #file_name='C:/Users/jabio/Documents/LTspiceXVII/'+ file_name
 
             load= PIL.Image.open(file_name)
 
@@ -80,8 +79,7 @@ def main():
                      command = lambda:deleteImage(),font=("times new roman",10,"bold"))
             Display2.place(x=75,y=0)
             
-            # Position image
-            
+          
                 
             
 
@@ -114,16 +112,16 @@ def main():
             
             
         
-            #load.show()
+           
     
-    def start(desiredLevel):
+    def start(desiredLevel,INPUT):
         
-        reddit = praw.Reddit(client_id='inqKlcP85Mqdy5ack2UVZQ',
-                             client_secret='kj8BuCWeVvoI0sYhWZlA4GG0ymVNlQ',
-                             username='Friendly-Orange-5033',
-                             password='Poopface%1',
-                             user_agent='Anything you want')
-        subreddit = reddit.subreddit('HamRadio')
+        reddit = praw.Reddit(client_id='CLIENT_ID',
+                             client_secret='client_secret',
+                             username='username',
+                             password='password',
+                             user_agent='user_agent')
+        subreddit = reddit.subreddit(INPUT)
         hot_confessions = subreddit.hot(limit=100)
         m=0
         for submission in hot_confessions:
@@ -131,18 +129,7 @@ def main():
             x=submission.title+(submission.selftext.lower())
             c= (textwrap.fill(submission.title,50) + "\n" + "\n" + textwrap.fill(x,50))
             
-            #Output.insert(END, c)
-           # return c
-             # displayText(c)
-
-            
-           # getImage(submission)
-           # speak(c,m)
-
-
-
-
-          #    u=input("Next Story?")
+ 
             
             if m==desiredLevel:
                 getImage(submission)
@@ -166,11 +153,11 @@ def main():
         print("INPUT")
         global postNumber
         print(postNumber)
-        c=start(postNumber)
+        c=start(postNumber,INPUT)
         speak(c,postNumber)
         postNumber+=1
         
-        #Output.insert(END, 'Correct')
+        
         
 
     def delete():
@@ -209,4 +196,5 @@ def main():
 
 if __name__ == "__main__":
     main()    
+    
 
