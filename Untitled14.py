@@ -27,16 +27,18 @@ def main():
     def deleteMusic():
         #os.remove('C:/Users/jabio/Documents/LTspiceXVII/reddit0.mp3')
         global postNumber
-        files = glob.glob(f'C:/Users/jabio/Documents/LTspiceXVII/')
+        totalarr=os.getcwd()
+        #files = glob.glob(f'C:/Users/jabio/Documents/LTspiceXVII/')
         for f in totalarr:
-            os.remove(f'C:/Users/jabio/Documents/LTspiceXVII/reddit{postNumber}.mp3')
+            if f.find("reddit") != -1:
+                os.remove(f)
     
     
     def speak(message,m):
           g = gTTS(message, lang = 'en')#, tld = 'com.au')
 
 
-          file=f'C:/Users/jabio/Documents/LTspiceXVII/reddit{m}.mp3'
+          file=f'reddit{m}.mp3'
           totalarr.append(file)
           print(file)
           g.save(file)
@@ -93,7 +95,7 @@ def main():
             file_name += ".jpg"
         print(file_name)
         r = requests.get(url)
-        tempFile= 'C:/Users/jabio/Documents/LTspiceXVII/' + file_name
+        tempFile= file_name
             
         with open(tempFile ,"wb") as f:
             f.write(r.content)
@@ -179,7 +181,7 @@ def main():
     
     
     
-    
+    deleteMusic()
     root = Tk()
     root.state('zoomed')
     root.title(" KI5KDF ")
@@ -207,3 +209,4 @@ def main():
 
 if __name__ == "__main__":
     main()    
+
