@@ -30,7 +30,7 @@ Once you have installed the necesseary libraries you can then download the file 
 
 **How to use program**
 
-The program can be utilized by simply typing in the subreddit you would like to view then clicking next post and having the TTS read it to you. If there is an image it will give you the choice of displaying it.
+The program can be utilized by simply typing in the subreddit you would like to view int eh yellow box then clicking next post and having the TTS read it to you. If there is an image it will give you the choice of displaying it.
 
 **Limitations** 
 
